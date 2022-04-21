@@ -53,6 +53,9 @@ class mammal(animal):
     #Attributes
 
     #Contructors
+    def __init__ (self,age,name):
+        super().__init__(age,name)
+
 
     #Methods
     def move(self):
@@ -75,6 +78,8 @@ class bird(animal):
     #Attributes
 
     #Contructors
+    def __init__ (self,age,name):
+        super().__init__(age,name)
 
     #Methods      
     def move(self):
@@ -97,6 +102,8 @@ class cat(mammal):
     #Attributes
 
     #Contructors
+    def __init__ (self,age,name):
+        super().__init__(age,name)
 
     #Methods    
     def eat(self):
@@ -107,6 +114,8 @@ class dog(mammal):
     #Attributes
 
     #Contructors
+    def __init__ (self,age,name):
+        super().__init__(age,name)
 
     #Methods
     def eat(self):
@@ -117,6 +126,8 @@ class pidgeon(bird):
     #Attributes
 
     #Contructors
+    def __init__ (self,age,name):
+        super().__init__(age,name)
 
     #Methods
     def eat(self):
@@ -127,6 +138,8 @@ class parrot(bird):
     #Attributes
 
     #Contructors
+    def __init__ (self,age,name):
+        super().__init__(age,name)
 
     #Methods
     def eat(self):
