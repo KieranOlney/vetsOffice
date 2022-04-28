@@ -1,4 +1,3 @@
-from importlib.metadata import PackageMetadata
 from animalGenerator import generateobjects
 import json
 
