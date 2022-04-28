@@ -3,18 +3,17 @@ from dog import dog
 from parrot import parrot
 from pidgeon import pidgeon
 from customer import customer
-from animalGenerator import generateobjects
-import flask  
-from flask import render_template, request, jsonify
+from animalGenerator import generateobjects 
+from flask import Flask, request, jsonify
 from vetFuncs import *
 
-app = flask.Flask(__name__)
+app = Flask(__name__)
 app.config["DEBUG"] = True
 
 @app.route("/")
 def home():
 
-    return "<h1>Welcome to Kieran's API work</h1>"
+    return "<h1>Welcome to Kieran's API work</h1><a href='/api/customers/all'>Customer List</a><p></p><a href='/api/pets/all'>Pet List</a>"
 
 @app.route("/api/customers", methods=["GET"])
 def getCustomerInfo():
@@ -57,4 +56,5 @@ def getAllPets():
     ownerInfo, petInfo = readJSONFiles()
     return jsonify(petInfo)
 
-app.run()
+if __name__ == "__main__":
+    app.run()
