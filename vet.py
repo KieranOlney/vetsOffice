@@ -20,9 +20,16 @@ def home():
 def getCustomerInfo():
     if 'ownerId' in request.args:
         id = int(request.args['ownerId'])
+        ownerInfo = findOwnerById(id)
+    elif 'petId' in request.args:
+        id = int(request.args['petId'])
+        ownerInfo = findOwnerByPetId(id)
+    elif 'ownerName' in request.args:
+        name = str(request.args['ownerName'])
+        ownerInfo = findOwnerByName(name)
     else:
-        return "Error: No Owner with that Id Found"
-    ownerInfo = findOwnerById(id)
+        return "Error: No Recognised Argument Provided, This function's Argument should be 'ownerId' or 'petId"
+
     return jsonify(ownerInfo)
 
 @app.route("/api/customers/all", methods=["GET"])
@@ -34,9 +41,15 @@ def getAllCustomers():
 def getPetInfo():
     if 'petId' in request.args:
         id = int(request.args['petId'])
+        petInfo = findPetById(id)
+    elif 'ownerId' in request.args:
+        id = int(request.args['ownerId'])
+        petInfo = findPetsByOwnerId(id)
+    elif 'petName' in request.args:
+        name = str(request.args['petName'])
+        petInfo = findPetByName(name)
     else:
-        return "Error: No Pet with that Id Found"
-    petInfo = findPetById(id)
+        return "Error: No Recognised Argument Provided, This function's Argument should be 'petId' or 'ownerId'"
     return jsonify(petInfo)
 
 @app.route("/api/pets/all", methods=["GET"])
