@@ -1,8 +1,3 @@
-from cat import cat
-from dog import dog
-from parrot import parrot
-from pidgeon import pidgeon
-from customer import customer
 from animalGenerator import generateobjects 
 from flask import Flask, request, jsonify
 from vetFuncs import *
