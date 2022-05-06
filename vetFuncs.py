@@ -1,28 +1,28 @@
 from animalGenerator import generateobjects
 import json
 
-def readJSONFiles():
+def readjsonfiles():
     ownerFile = open("ownerData.json","r")
     petFile = open("petData.json","r")
     listOfOwnerInfo = json.load(ownerFile)
     listOfPetInfo = json.load(petFile)
     return listOfOwnerInfo, listOfPetInfo
 
-def storePetInfo(petData):
+def storepetinfo(petData):
     file = open("petData.json","w")
     json.dump(petData,file)
     file.close()
     return
 
-def storeOwnerInfo(ownerData):
+def storeownerinfo(ownerData):
     file = open("ownerData.json","w")
     json.dump(ownerData,file)
     file.close()
     return
 
-def findOwnerById(ownerId):
+def findownerbyid(ownerId):
     ownerInfo = []
-    ownerData,petData = readJSONFiles()
+    ownerData,petData = readjsonfiles()
     for owner in ownerData:
         if ownerId == owner.get("id"):
             ownerInfo.append(owner)
@@ -30,9 +30,9 @@ def findOwnerById(ownerId):
         ownerInfo.append("No Customer With This ID could be found")
     return ownerInfo
 
-def findOwnerByPetId(petId):
+def findownerbypetid(petId):
     ownerInfo = []
-    ownerData,petData = readJSONFiles()
+    ownerData,petData = readjsonfiles()
     for pet in petData:
         if petId == pet.get("id"):
             ownerId = pet.get("ownerId")
@@ -43,9 +43,9 @@ def findOwnerByPetId(petId):
         ownerInfo.append("No Customer Could be Found that Owns this pet") 
     return ownerInfo
 
-def findPetById(petId):
+def findpetbyid(petId):
     petInfo = []
-    ownerData,petData = readJSONFiles()
+    ownerData,petData = readjsonfiles()
     for pet in petData:
         if petId == pet.get("id"):
             petInfo.append(pet)
@@ -53,10 +53,10 @@ def findPetById(petId):
         petInfo.append("No Pets with this ID could be found")
     return petInfo
 
-def findPetsByOwnerId(ownerId):
+def findpetbyownerid(ownerId):
     petsInfo = []
     petIds = []
-    ownerData,petData = readJSONFiles()
+    ownerData,petData = readjsonfiles()
     for owner in ownerData:
         if ownerId == owner.get("id"):
             petIds.extend(owner.get("petIds"))
@@ -68,9 +68,9 @@ def findPetsByOwnerId(ownerId):
         petsInfo.append("No Pets could be found that belong to the Owner with this ID")
     return petsInfo
 
-def findPetByName(petName):
+def findpetbyname(petName):
     petsInfo = []   
-    ownerData,petData = readJSONFiles()
+    ownerData,petData = readjsonfiles()
     for pet in petData:
         if petName.lower() == pet.get("name").lower():
             petsInfo.append(pet)
@@ -78,9 +78,9 @@ def findPetByName(petName):
         petsInfo.append("No Pets could be found with that name")
     return petsInfo
 
-def findOwnerByName(ownerName):
+def findownerbyname(ownerName):
     ownersInfo = []
-    ownerData,petData = readJSONFiles()
+    ownerData,petData = readjsonfiles()
     for owner in ownerData:
         if ownerName.lower() == owner.get("name").lower():
             ownersInfo.append(owner)

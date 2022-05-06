@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from vetFuncs import findOwnerById,findOwnerByName,findOwnerByPetId,findPetById,findPetByName,findPetsByOwnerId,readJSONFiles
+from vetFuncs import findownerbyid,findownerbyname,findownerbypetid,findpetbyid,findpetbyname,findpetbyownerid,readJSONFiles
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -13,20 +13,20 @@ def home():
 def getcustomerinfo():
     if 'ownerId' in request.args:
         ownerid = int(request.args['ownerId'])
-        ownerinfo = findOwnerById(ownerid)
+        ownerinfo = findownerbyid(ownerid)
     elif 'petId' in request.args:
         ownerid = int(request.args['petId'])
-        ownerinfo = findOwnerByPetId(ownerid)
+        ownerinfo = findownerbypetid(ownerid)
     elif 'ownerName' in request.args:
         ownername = str(request.args['ownerName'])
-        ownerinfo = findOwnerByName(ownername)
+        ownerinfo = findownerbyname(ownername)
     else:
         return "Error: No Recognised Argument Provided, This function's Argument should be 'ownerId' or 'petId"
 
     return jsonify(ownerinfo)
 
 @app.route("/api/customers/all", methods=["GET"])
-def getAllCustomers():
+def getallcustomers():
     ownerinfo, petinfo = readJSONFiles()
     return jsonify(ownerinfo)
 
@@ -34,19 +34,19 @@ def getAllCustomers():
 def getpetinfo():
     if 'petId' in request.args:
         petid = int(request.args['petId'])
-        petinfo = findPetById(petid)
+        petinfo = findpetbyid(petid)
     elif 'ownerId' in request.args:
         petid = int(request.args['ownerId'])
-        petinfo = findPetsByOwnerId(petid)
+        petinfo = findpetbyownerid(petid)
     elif 'petName' in request.args:
         petname = str(request.args['petName'])
-        petinfo = findPetByName(petname)
+        petinfo = findpetbyname(petname)
     else:
         return "Error: No Recognised Argument Provided, This function's Argument should be 'petId' or 'ownerId'"
     return jsonify(petinfo)
 
 @app.route("/api/pets/all", methods=["GET"])
-def getAllPets():
+def getallpets():
     ownerinfo, petinfo = readJSONFiles()
     return jsonify(petinfo)
 

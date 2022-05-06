@@ -18,7 +18,7 @@ class customer():
         pet.ownerId = self.id
         return
 
-    def renamePet(pet,desiredName):
+    def renamePet(self,pet,desiredName):
         pet.name = desiredName
         return
     
