@@ -12,13 +12,13 @@ def storepetinfo(petData):
     file = open("petData.json","w")
     json.dump(petData,file)
     file.close()
-    return
+
 
 def storeownerinfo(ownerData):
     file = open("ownerData.json","w")
     json.dump(ownerData,file)
     file.close()
-    return
+    
 
 def findownerbyid(ownerId):
     ownerInfo = []

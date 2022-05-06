@@ -16,11 +16,9 @@ class customer():
     def obtainPet(self,pet):
         self.petIds.append(pet.id)
         pet.ownerId = self.id
-        return
 
     def renamePet(self,pet,desiredName):
         pet.name = desiredName
-        return
     
     def dictOfAttributes(self):
         attributes=dict([("id",self.id),("name",self.name),("petIds",self.petIds),("lastVisitDate",self.LastVisitDate),("lastVisitedFor",self.LastVisitedFor)])
