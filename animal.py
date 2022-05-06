@@ -27,7 +27,6 @@ class animal(ABC):
 
     def die(self):
         self.isAlive = False
-        return
     
     def sleep(self):
         sleeping = "I am Sleeping"
@@ -42,12 +41,11 @@ class animal(ABC):
         return growing
 
     def visitVet(self,owner,reason):
-        visitDate = datetime.datetime.now()
-        owner.LastVisitDate = visitDate
-        self.LastVisitDate = visitDate
+        visitdate = datetime.datetime.now()
+        owner.LastVisitDate = visitdate
+        self.LastVisitDate = visitdate
         owner.LastVisitedFor = reason
         self.LastVisitedFor = reason
-        return
 
     def dictOfAttributes(self):
         attributes = dict([("id",self.id),("name",self.name),("ownerId",self.ownerId),("age",self.age),("isAlive",self.isAlive),("lastVisitDate",self.LastVisitDate),("lastVisitedFor",self.LastVisitedFor)])
